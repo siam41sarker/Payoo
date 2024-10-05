@@ -13,15 +13,3 @@ body{
 .errorColor{
     color:rgb(239, 76, 83);
 }
-#spacial_case{
-    width:90%;
-    height:136px;
-    box-shadow: 3px 5px 3px 5px rgba(0,0,0,0.02);
-    border:1px solid rgba(17,17,17,0.2);
-}
-#spacial_case h3{
-    color:rgb(17,17,17);
-}
-#spacial_case p{
-    color:rgba(17,17,17,0.7);
-}
