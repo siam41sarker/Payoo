@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payoo Mobile Banking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <!--JavaScript File starts-->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/mainPart.js" defer="true"></script>
+  <script src="js/database.js" defer="true"></script>
+  <script src="js/calculation.js" defer="true"></script>
+  <script src="js/getInputValue.js" defer="true"></script>
+  <script src="js/features.js" defer="true"></script>
+  <!--JavaScript File ends-->
+</head>
+<body>
+  <main class="flex justify-center mt-3">
+    <!--Phone Structure-->
+    <div class="mockup-phone border-primary">
+      <div class="camera"></div>
+      <div class="display">
+        <div class="artboard artboard-demo phone-2">
+          <!--Navbar Section Starts-->
+          <div id="nav" class="navbar bg-base-100 mt-0 x">
+            <div class="flex-1">
+              <div tabindex="0"  class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="images/1.jpg"/>
+                </div>
+              </div>
+                <p class="text-xl font-bold">Siam Sarker</p>
+            </div>
+            <div class="flex-none">
+              <div class="dropdown dropdown-end">
+              </div>
+              <div class="dropdown dropdown-end">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                  <button id="log_out" class="btn btn-accent rounded-full mr-8">Log Out</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Navbar Section Ends-->
+          <!--Account Balance-->
+          <div>
+            <div class="stats shadow">
+              <div class="stat">
+                <div class="stat-title">Account Balance</div>
+                <div id="main_balance" class="stat-value text-center">8940</div>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <!--Add Cash out Button-->
+          <div>
+            <button id="add_money_section" class="btn text-base">Add Money</button>
+            <button id="cash_out_section" class="btn text-base">Cash Out</button>
+            <button id="Transactions_section" class="btn mt-1 text-base	">Transactions</button>
+          </div>
+          <div class="divider mt-0"></div>
+          <!--Add Money Portion-->
+          <div id="addCard" class="card bg-base-100 w-11/12 max-w-sm shrink-0 shadow-2xl hidden mt-0">
+            <form class="card-body">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Amount</span>
+                </label>
+                <input type="text" id="add_amount" placeholder="Add Amount" class="input input-bordered" required />
+                <p id="blankAmount" class="text-base	text-red-900 ml-5 mt-1 hidden">Invalid Amount!</p>
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Pin</span>
+                </label>
+                <input id="inputPin" type="password" placeholder="Enter your pin" class="input input-bordered" required />
+                <p id="wp1" class="text-base	errorColor ml-5 mt-1 hidden">Pin is wrong!</p>
+              </div>
+              <div class="form-control mt-6">
+                <button id="btn_add" class="btn btn-primary">Add Money</button>
+              </div>
+            </form>
+          </div>
+          <!--Cash out Portion-->
+          <div id="cashCard" class="card bg-base-100 w-11/12 max-w-sm shrink-0 shadow-2xl hidden">
+            <form class="card-body">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Amount</span>
+                </label>
+                <input id="out_amount" type="text" placeholder="Cash out Amount" class="input input-bordered" required />
+                <p id="blankAmount2" class="text-base	text-red-900 ml-5 mt-1 hidden">Invalid Amount!</p>
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Pin</span>
+                </label>
+                <input id= "cash_pin" type="password" placeholder="Enter your pin" class="input input-bordered" required />
+                <p id="wp2" class="text-base	text-red-900 ml-5 mt-1 hidden">Pin is wrong!</p>
+              </div>
+              <div class="form-control mt-6">
+                <button id="btn_cash" class="btn btn-primary">Cash Out</button>
+              </div>
+            </form>
+          </div>
+          <!--Transaction History Portion-->
+          <div id="transCard" class="hidden">
+              <h1 class="text-2xl text-center font-bold">Transactions History</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--Add Money Modal-->
+  <dialog id="add_show" class="modal">
+    <div class="modal-box w-auto">
+      <h3 class="text-4xl font-bold text-center text-black">Congrats!</h3>
+      <div class="flex justify-center mt-5">
+          <img src="images/coin.png" alt="">
+      </div>
+      <p class="py-4 text-center mt-8">Money is added to the Account</p>
+      <h3 class="text-lg font-bold text-center text-black">Successfully</h3>
+      <div class="modal-action flex justify-center">
+        <form method="dialog">
+          <button class="btn text-black">Close Confirmation</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+  <!--Cash Out Modal-->
+    <dialog id="cash_show" class="modal">
+      <div class="modal-box w-auto">
+        <h3 class="text-4xl font-bold text-center text-black">Congrats!</h3>
+        <div class="flex justify-center mt-5">
+            <img src="images/coin.png" alt="">
+        </div>
+        <p class="py-4 text-center mt-8">Money is cashed out from the Account</p>
+        <h3 class="text-lg font-bold text-center text-black">Successfully</h3>
+        <div class="modal-action flex justify-center">
+          <form method="dialog">
+            <button class="btn text-black">Close Confirmation</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+</body>
+</html>
